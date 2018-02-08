@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>500 Internal Error</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet"> 
+        {{styles | safe}}
+    </head>
+    <body>
+        <div class="error">
+            <div class="code">Error {{errorcode}}</div>
+            <div class="description">{{errordescription}}</div>
+        </div>
+        <div class="graphic"></div>
+        <div class="moreinfo">
+            <div class="whathappen">
+                <div class="head">What happened?</div>
+                {{whathappened}}
+            </div>
+            <div class="whattodo">
+                <div class="head">What can I do?</div>
+                {{whattodo}}
+            </div>
+        </div>
+        <div class="footer">
+            {{time}} &bull; you ip {{ip}} &bull; Proxy by meemez
+        </div>
+    </body>
+</html>

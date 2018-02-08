@@ -1,0 +1,13 @@
+{
+  "name": "nrp",
+  "version": "0.0.0",
+  "dependencies": {
+    "http-proxy": "^1.16.2",
+    "nunjucks": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/http-proxy": "^1.12.4",
+    "@types/node": "^9.4.1",
+    "@types/nunjucks": "^3.0.0"
+  }
+}
