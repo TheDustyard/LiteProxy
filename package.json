@@ -1,14 +1,26 @@
 {
-  "name": "liteproxy",
-  "version": "0.0.0",
-  "main": "app",
-  "dependencies": {
-    "http-proxy": "^1.16.2",
-    "nunjucks": "^3.0.1"
-  },
-  "devDependencies": {
-    "@types/http-proxy": "^1.12.4",
-    "@types/node": "^9.4.1",
-    "@types/nunjucks": "^3.0.0"
-  }
+    "name": "liteproxy",
+    "version": "0.0.0",
+    "description": "Light HTTP(S) and WS(S) Proxy written for Node.JS ",
+    "bin" : {
+        "liteproxy" : "./app"
+    },
+    "license": "GPL-3.0",
+    "author": "DusterTheFirst",
+    "repository": {
+        "type" : "git",
+        "url" : "https://github.com/DusterTheFirst/LiteProxy.git"
+    },
+    "bugs": {
+        "url": "https://github.com/DusterTheFirst/LiteProxy/issues"
+    },
+    "dependencies": {
+        "http-proxy": "^1.16.2",
+        "nunjucks": "^3.0.1"
+    },
+    "devDependencies": {
+        "@types/http-proxy": "^1.12.4",
+        "@types/node": "^9.4.1",
+        "@types/nunjucks": "^3.0.0"
+    }
 }
