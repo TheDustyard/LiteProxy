@@ -1,13 +1,96 @@
 html, body {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
+    margin: 0;
+    overflow-x: hidden;
 }
 .error {
-    font-weight: 600;
-}
-.moreinfo {
+    display: table;
+    position: relative;
     font-weight: 300;
+    margin: 0 auto;
+    width: 960px;
+    padding: {
+        top: 35px;
+    };
+    line-height: 22.5px;
+    .code {
+        color: rgb(64, 64, 64);
+        font-size: 60px;
+        line-height: 72px;
+    }
+    .description {
+        color: rgb(153, 153, 153);
+        font-size: 30px;
+        line-height: 39px;
+    }
+}
+.graphic {
+    padding: {
+        top: 60px;
+        bottom: 60px;
+    };
+    margin: {
+        top: 30px;
+        bottom: 30px;
+    };
+    height: 233px;
+    width: 100%;
+    background-image: -moz-linear-gradient(rgb(222, 222, 222) 0px, rgb(235, 235, 235) 3%, rgb(235, 235, 235) 97%, rgb(222, 222, 222) 100%);
+    .content {
+        width: 960px;
+        margin: 0 auto;
+    }
+}
+table.moreinfo {
+    width: 960px;
+    margin: 0 auto;
+    h2 {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 39px;
+        margin: 0;
+        color: rgb(64, 64, 64);
+    }
+    p {
+        font-size: 15px;
+        margin: 0;
+        margin-top: 7.5px;
+        line-height: 22.5px;
+        font-weight: 400;
+    }
+    h5 {
+        font-size: 15px;
+        font-weight: 600;
+        color: rgb(64, 64, 64);
+        margin: 0;
+        margin-top: 7.5px;
+    }
+    p + h5 {
+        margin-top: 18.75px;
+    }
+    .info {
+        width: 50%;
+        vertical-align: top;
+        padding-right: 22.5px;
+    }
+    .info:nth-child(2n) {
+        padding-left: 22.5px;
+        padding-right: 0;
+    }
 }
 .footer {
+    clear: both;
     font-weight: 400;
+    text-align: center;
+    width: 960px;
+    padding: 40px 0;
+    margin: 0 auto;
+    margin-top: 25px;
+    font-size: 13px;
+    border-top: {
+        color: rgb(235, 235, 235);
+        width: 1px;
+        style: solid;
+    };
 }

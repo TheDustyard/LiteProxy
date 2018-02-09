@@ -8,7 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Run",
-            "program": "${workspaceFolder}/proxy.js",
+            "cwd": "${workspaceFolder}/src/",
+            "program": "${workspaceFolder}/src/proxy.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]

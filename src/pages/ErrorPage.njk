@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>500 Internal Error</title>
+        <title>{{errorinfo.code}} {{errorinfo.message}}</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet"> 
         {{styles | safe}}
     </head>
     <body>
         <div class="error">
-            <div class="code">Error {{errorcode}}</div>
-            <div class="description">{{errordescription}}</div>
+            <div class="code">Error {{errorinfo.code}}</div>
+            <div class="description">{{errorinfo.message}}</div>
         </div>
-        <div class="graphic"></div>
-        <div class="moreinfo">
-            <div class="whathappen">
-                <div class="head">What happened?</div>
-                {{whathappened}}
-            </div>
-            <div class="whattodo">
-                <div class="head">What can I do?</div>
-                {{whattodo}}
-            </div>
+        <div class="graphic">
+            <div class="content">idk something cool</div>
         </div>
+        <table class="moreinfo">
+            <tr>
+                <td class="info">
+                    <h2>What happened?</h2>
+                    <p>{{errorinfo.description}}</p>
+                </td>
+                <td class="info">
+                    <h2>What can I do?</h2>
+                    <h5>If you're a visitor of this website:</h5>
+                    <p class="visitor">{{errorinfo.solution.visitor}}</p>
+                    <h5>If you're the owner of this website:</h5>
+                    <p class="owner">{{errorinfo.solution.owner}}</p>
+                </td>
+            </tr>
+        </table>
         <div class="footer">
-            {{time}} &bull; you ip {{ip}} &bull; Proxy by meemez
+            {{time}} &bull; Your IP: {{ip}} &bull; Powered by LiteProxy
         </div>
     </body>
 </html>

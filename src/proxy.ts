@@ -2,6 +2,7 @@ import * as httpProxy from "http-proxy";
 import * as http from "http";
 import * as nunjucks from "nunjucks";
 import * as fs from "fs";
+import { Url } from "url";
 
 nunjucks.configure("./pages", {
     noCache: true,
@@ -11,8 +12,13 @@ nunjucks.configure("./pages", {
 let proxy: httpProxy = httpProxy.createProxyServer();
 
 http.createServer((req, res) => {
-    proxy.web(req, res, { target: "http://localhosst:8080" });
-}).listen(10);
+    if(req.url === "/proxyserverlog") {
+        res.write("no");
+        res.end();
+        return;
+    }
+    proxy.web(req, res, { target: "http://localhostsjdahgfsakjd:8080" });
+}).listen(80);
 
 interface ProxyError extends Error {
     code: string;
@@ -23,13 +29,34 @@ interface ProxyError extends Error {
     port: string;
 }
 proxy.on("error", (error: ProxyError, req, res, target) => {
-    let errorcode;
-    let errordescription;
+    if (typeof target === typeof "") console.error(target);
+    else console.error((target as Url).hostname);
+
+    let errorinfo = {
+        code: 500,
+        message: "Internal Server Error",
+        description: "Unknown Server Error",
+        solution: {
+            visitor: "Try again in a few minutes",
+            owner: "Check the error output of the proxy server"
+        }
+    };
     switch (error.code) {
         case "ENOTFOUND":
-            errorcode = 503; errordescription = "Service Unavailable"; break;
+            errorinfo.code = 503;
+            errorinfo.message = "Service Unavailable";
+            errorinfo.description = "The proxied server could not be found";
+            errorinfo.solution.owner = `Check the proxy entry`;
+            break;
+        case "ECONNREFUSED":
+            errorinfo.code = 503;
+            errorinfo.message = "Connection Refused";
+            errorinfo.description = "The proxied server refused to connect";
+            errorinfo.solution.owner = `Check the status of the proxied server`;
+            break;
         default:
-            errorcode = 500; errordescription = "Internal Server Error"; break;
+            console.error(`UNKNOWN ERROR ${error.code}`);
+            break;
     }
 
     //  Headers
@@ -37,9 +64,10 @@ proxy.on("error", (error: ProxyError, req, res, target) => {
     res.writeHead(500);
 
     let render = nunjucks.render("ErrorPage.njk", {
-        errorcode,
-        errordescription,
-        styles: `<style>${fs.readFileSync("./pages/ErrorPage.css").toString()}</style>`
+        errorinfo,
+        styles: `<style>${fs.readFileSync("./pages/ErrorPage.css").toString()}</style>`,
+        time: new Date(Date.now()).toUTCString(),
+        ip: req.connection.remoteAddress.replace("::ffff:", "")
     });
 
     res.write(render);

@@ -10,19 +10,13 @@
             "problemMatcher": [
                 "$tsc-watch"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         },
         {
             "type": "shell",
-            "command": "node-sass -w ./pages/ -o ./pages/",
+            "command": "node-sass -w ./src/pages/ -o ./src/pages/ --output-style compressed --error-bell",
             "label": "SCSS",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "problemMatcher": []
         }
     ]
