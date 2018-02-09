@@ -1,6 +1,7 @@
 {
-  "name": "nrp",
+  "name": "liteproxy",
   "version": "0.0.0",
+  "main": "app",
   "dependencies": {
     "http-proxy": "^1.16.2",
     "nunjucks": "^3.0.1"

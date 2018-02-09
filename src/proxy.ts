@@ -17,7 +17,7 @@ http.createServer((req, res) => {
         res.end();
         return;
     }
-    proxy.web(req, res, { target: "http://localhostsjdahgfsakjd:8080" });
+    proxy.web(req, res, { target: "http://localhost:8081" });
 }).listen(80);
 
 interface ProxyError extends Error {
@@ -46,7 +46,7 @@ proxy.on("error", (error: ProxyError, req, res, target) => {
             errorinfo.code = 503;
             errorinfo.message = "Service Unavailable";
             errorinfo.description = "The proxied server could not be found";
-            errorinfo.solution.owner = `Check the proxy entry`;
+            errorinfo.solution.owner = `Check the spelling of the proxy entry`;
             break;
         case "ECONNREFUSED":
             errorinfo.code = 503;
